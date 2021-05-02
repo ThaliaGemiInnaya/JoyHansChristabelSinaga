@@ -1,15 +1,12 @@
 #include <iostream>
 #include <cstring>
+#include <algorithm>
 using namespace std;
 
 //Joy Hans Christabel Sinaga_2017051050
 //Chiara Thalita Diva Permatasari_2057051007
 //Thalia Gemi Innaya_2017051025
 // Link Github Kelompok: https://github.com/JoyHansChristabelSinaga/JoyHansChristabelSinaga/blob/patch-1/Program%20pencari%20kata
-
-#include <iostream>
-#include <cstring>
-#include <algorithm>
 
 using namespace std;
 const int cols = 16, rows = 15;
