@@ -5,7 +5,7 @@ using namespace std;
 //Joy Hans Christabel Sinaga_2017051050
 //Chiara Thalita Diva Permatasari_2057051007
 //Thalia Gemi Innaya_2017051025
-// Link Github Kelompok: https://github.com/JoyHansChristabelSinaga/JoyHansChristabelSinaga/edit/patch-1/Program%20pencari%20kata
+// Link Github Kelompok: https://github.com/JoyHansChristabelSinaga/JoyHansChristabelSinaga/blob/patch-1/Program%20pencari%20kata
 
 //Omni-Variable
 const int cols = 16, rows = 15;
