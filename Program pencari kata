@@ -7,7 +7,7 @@ using namespace std;
 const int cols = 16, rows = 15;
 
  char words[rows][cols] = {"tgbwwinterwsesn",
-                        	"aaunttmmhfoodnb",
+                            "aaunttmmhfoodnb",
                             "jlwcqldzmpmvdmr",
                             "asagmquwvvbsohi",
                             "bwplotanadtpgnc",
@@ -71,12 +71,20 @@ cout << "Jumlah kata yang akan dicari ('0' atau non-angka => Keluar dari program
 cin>>n;
     for(int i=0;i<n;i++){
     
+    cin.ignore();
+    
+    
     	cin.getline(word,16,'\n');
         
-   if (searchHorizontal(word) || searchVertical(word)){
-
+    cin.getline(word,16,'\n');
+        
+        if (searchHorizontal(word) || searchVertical(word)){
+            cout << "Ada\n";
+        }else{
+           cout << "Tidak Ada\n";
         }
     }
     
     return 0;
+
 }
