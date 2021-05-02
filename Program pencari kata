@@ -7,36 +7,64 @@ using namespace std;
 //Thalia Gemi Innaya_2017051025
 // Link Github Kelompok: https://github.com/JoyHansChristabelSinaga/JoyHansChristabelSinaga/blob/patch-1/Program%20pencari%20kata
 
-//Omni-Variable
-const int cols = 16, rows = 15;
-char words[rows][cols] = {"tgbwwinterwsesn",
-                          "aaunttmmhfoodnb",
-                          "jlwcqldzmpmvdmr",
-                          "asagmquwvvbsohi",
-                          "bwplotanadtpgnc",
-                          "rewngodjcpnatnk",
-                          "eeotwosbqharrsa",
-                          "azcgeswewnaknpb",
-                          "dinnerqodlwdcar",
-                          "onopkwmparktzcc",
-                          "qbfrogmamwpweey",
-                          "lqzqnnmrzjjsclg",
-                          "mosgzczetdbooto",
-                          "pdcrzmsngrdnrpz",
-                          "ohnkzwaterjgtra"};
+#include <iostream>
+#include <cstring>
+#include <algorithm>
 
-char *getWordVertical(int );
-char *reverse(char *);
+using namespace std;
+const int cols = 16, rows = 15;
+
+ char words[rows][cols] = {"tgbwwinterwsesn",
+                        	"aaunttmmhfoodnb",
+                            "jlwcqldzmpmvdmr",
+                            "asagmquwvvbsohi",
+                            "bwplotanadtpgnc",
+                            "rewngodjcpnatnk",
+                            "eeotwosbqharrsa",
+                            "azcgeswewnaknpb",
+                            "dinnerqodlwdcar",
+                            "onopkwmparktzcc",
+                            "qbfrogmamwpweey",
+                            "lqzqnnmrzjjsclg",
+                            "mosgzczetdbooto",
+                            "pdcrzmsngrdnrpz",
+                            "ohnkzwaterjgtra"};
+                            
+bool searchHorizontal(char *);
+bool searchReverseHorizontal(char *);
+bool searchVertical(char *);
+bool searchReverseVertical(char *);
 
 bool searchHorizontal(char input[]){
 	char *A;
 	
-	for(int i = 0; i < 15; i++){
-        	A = strstr(words[i], input);
+	for (int i = 0; i < 15; i++)
+    {
+        A = strstr(words[i], input);
+        
+	    if(A != NULL){
+	        return true;
+	    }
+    }
+    
+    return false;
+}
 
-		if(A != NULL){
-	    	
-	    		return true;
+bool searchReverseHorizontal(char input[]){ 
+	char *A;
+	char Word[15]; 
+	
+	for (int i = 0; i < 15; i++)
+    {
+    	for(int j = 0; j < 15; j++){
+	    	Word[j] = words[i][j]; 
+		}
+		
+	    reverse(Word, Word + strlen(Word)); 
+	    A = strstr(Word, input); 
+        
+	    if(A != NULL){ 
+	        return true; 
 	    }
     }
     
@@ -47,17 +75,38 @@ bool searchVertical(char input[]){
 	char *A;
 	char Word[15];
 	
-	for(int i = 0; i < 15; i++)
+	for (int i = 0; i < 15; i++)
     {
-        for(int j = 0; j < 15; j++)
+        for (int j = 0; j < 15; j++)
         {
             Word[j] = words[j][i];
         }
         
         A = strstr(Word, input);
-		
-		if(A != NULL){
-			
+
+        if(A != NULL){
+	        return true;
+	    }
+    }
+    
+    return false;
+}
+
+bool searchReverseVertical(char input[]){ 
+	char *A;
+	char Word[15];
+	
+	for (int i = 0; i < 15; i++)
+    {
+        for (int j = 0; j < 15; j++)
+        {
+            Word[j] = words[j][i];
+        }
+        
+        reverse(Word, Word + strlen(Word)); 
+        A = strstr(Word, input);
+
+        if(A != NULL){
 	        return true;
 	    }
     }
@@ -66,24 +115,22 @@ bool searchVertical(char input[]){
 }
 
 int main(){
-	char word[16];
-	
-	int n;
-	
-	cout << "Jumlah kata yang akan dicari ('0' atau non-angka => Keluar dari program): ";
-	cin>>n;
-	
-	for(int i=0;i<n;i++){
-		cin.ignore();
-        
-    		cin.getline(word,16,'\n');
-        
-        	if (searchHorizontal(word) || searchVertical(word)){
-            	cout << "Ada\n";
-        	}else{
-           	cout << "Tidak Ada\n";
-		}
-	}
+    char word[16];
     
+    int n;
+    cin>>n;
+    cin.ignore();
+    
+    for (int i=0;i<n;i++){
+    	
+        cin.getline(word,16,'\n');
+        
+        if (searchVertical(word) || searchHorizontal(word) || searchReverseVertical(word) || searchReverseHorizontal(word)){
+            cout << "Ada\n";
+        }
+        else{
+           cout << "Tidak Ada\n";
+        }
+    }
     return 0;
 }
