@@ -1,5 +1,133 @@
 #include <iostream>
 #include <cstring>
+#include <algorithm>
 using namespace std;
 
-//Omni-Variable:
+//Joy Hans Christabel Sinaga_2017051050
+//Chiara Thalita Diva Permatasari_2057051007
+//Thalia Gemi Innaya_2017051025
+// Link Github Kelompok: https://github.com/JoyHansChristabelSinaga/JoyHansChristabelSinaga/blob/patch-1/Program%20pencari%20kata
+
+using namespace std;
+const int cols = 16, rows = 15;
+
+ char words[rows][cols] = {"tgbwwinterwsesn",
+                        	"aaunttmmhfoodnb",
+                            "jlwcqldzmpmvdmr",
+                            "asagmquwvvbsohi",
+                            "bwplotanadtpgnc",
+                            "rewngodjcpnatnk",
+                            "eeotwosbqharrsa",
+                            "azcgeswewnaknpb",
+                            "dinnerqodlwdcar",
+                            "onopkwmparktzcc",
+                            "qbfrogmamwpweey",
+                            "lqzqnnmrzjjsclg",
+                            "mosgzczetdbooto",
+                            "pdcrzmsngrdnrpz",
+                            "ohnkzwaterjgtra"};
+                            
+bool searchHorizontal(char *);
+bool searchReverseHorizontal(char *);
+bool searchVertical(char *);
+bool searchReverseVertical(char *);
+
+bool searchHorizontal(char input[]){
+	char *A;
+	
+	for (int i = 0; i < 15; i++)
+    {
+        A = strstr(words[i], input);
+        
+	    if(A != NULL){
+	        return true;
+	    }
+    }
+    
+    return false;
+}
+
+bool searchReverseHorizontal(char input[]){ 
+	char *A;
+	char Word[15]; 
+	
+	for (int i = 0; i < 15; i++)
+    {
+    	for(int j = 0; j < 15; j++){
+	    	Word[j] = words[i][j]; 
+		}
+		
+	    reverse(Word, Word + strlen(Word)); 
+	    A = strstr(Word, input); 
+        
+	    if(A != NULL){ 
+	        return true; 
+	    }
+    }
+    
+    return false;
+}
+
+bool searchVertical(char input[]){
+	char *A;
+	char Word[15];
+	
+	for (int i = 0; i < 15; i++)
+    {
+        for (int j = 0; j < 15; j++)
+        {
+            Word[j] = words[j][i];
+        }
+        
+        A = strstr(Word, input);
+
+        if(A != NULL){
+	        return true;
+	    }
+    }
+    
+    return false;
+}
+
+bool searchReverseVertical(char input[]){ 
+	char *A;
+	char Word[15];
+	
+	for (int i = 0; i < 15; i++)
+    {
+        for (int j = 0; j < 15; j++)
+        {
+            Word[j] = words[j][i];
+        }
+        
+        reverse(Word, Word + strlen(Word)); 
+        A = strstr(Word, input);
+
+        if(A != NULL){
+	        return true;
+	    }
+    }
+    
+    return false;
+}
+
+int main(){
+    char word[16];
+    
+    int n;
+    cin>>n;
+    cin.ignore();
+    
+    for (int i=0;i<n;i++){
+    	
+        cin.getline(word,16,'\n');
+        
+        if (searchVertical(word) || searchHorizontal(word) || searchReverseVertical(word) || searchReverseHorizontal(word)){
+            cout << "Ada\n";
+        }
+        else{
+           cout << "Tidak Ada\n";
+        }
+    }
+    return 0;
+}
